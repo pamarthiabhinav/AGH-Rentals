@@ -1,0 +1,8 @@
+{% extends 'home.html' %} New Page {%block title%} New Page {% endblock %}
+{%block content%}
+<h1>
+  Welcome To<br />
+  New Page By AGH
+</h1>
+<a href="{% url 'homePage' %}">Go To homePage</a>
+{% endblock %}

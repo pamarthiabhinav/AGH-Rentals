@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" />
+  {% block link %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  {% endblock %}
+  <title>{% block title %}AGH Rentals{% endblock %}</title>
+</head>
+
+<body>
+  <header>
+    <div class="flex-left">
+      <div class="logo">
+        {% block logo %}
+        <a href="{% url 'homePage' %}#">
+          <img src="{% static 'images/logo.png' %}" alt="" />
+        </a>
+        {% endblock %}
+      </div>
+      <div class="navPanel">
+        <ul>
+          {% block nav %}
+          <li><a href="{% url 'homePage' %}#bikes">Bikes</a></li>
+          <li><a href="{% url 'homePage' %}#cars">Cars</a></li>
+          <li><a href="{% url 'homePage' %}#camera">Camera</a></li>
+          <li><a href="{% url 'homePage' %}#support">Support</a></li>
+          {% endblock %}
+        </ul>
+      </div>
+    </div>
+    <div class="flex-right">
+      <ul>
+        {% if user.is_authenticated %}
+        <li class="login"><a href="">Profile</a></li>
+        <li class="register"><a href="{% url 'logout' %}">Log Out</a></li>
+        {% else %}
+        <li class="login"><a href="{% url 'login' %}">Login</a></li>
+        <li class="register"><a href="{% url 'signup' %}">Register</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </header>
+  <main>
+    {% block content %}
+    <section id="main">
+      <h1>
+        Welcome To<br />
+        AGH Rentals
+      </h1>
+      <a href="{% url 'newPage' %}">Go To newPage</a>
+      <center>
+        <h1>Main</h1>
+      </center>
+    </section>
+    <section id="bikes">
+      <center>
+        <h1>Bikes</h1>
+      </center>
+    </section>
+    <section id="cars">
+      <center>
+        <h1>Cars</h1>
+      </center>
+    </section>
+    <section id="camera">
+      <center>
+        <h1>Camera</h1>
+      </center>
+    </section>
+    <section id="support">
+      <center>
+        <h1>Support</h1>
+      </center>
+    </section>
+    {% endblock %}
+  </main>
+  <div class="mode">
+    <img src="{% static 'images/logo.png' %}" alt="agh" />
+  </div>
+  <footer>
+    <img src="{% static 'images/logo.png' %}" alt="AGH Rentals" />
+  </footer>
+  <script>
+    const html = document.querySelector("html");
+    const mode = document.querySelector(".mode");
+    html.dataset.theme = localStorage.getItem("mode");
+    if (html.dataset.theme === "dark") {
+      mode.classList.add("dark");
+    }
+    else {
+      mode.classList.remove("dark");
+    }
+
+    mode.addEventListener("click", function () {
+      mode.classList.toggle("dark");
+      if (html.dataset.theme === "dark") {
+        localStorage.setItem("mode", "light");
+        html.dataset.theme = `light`;
+      } else {
+        localStorage.setItem("mode", "dark");
+        html.dataset.theme = `dark`;
+      }
+    });
+  </script>
+</body>
+
+</html>

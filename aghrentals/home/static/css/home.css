@@ -1,0 +1,289 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+:root[data-theme="light"] {
+  /* Numerical Value Variables */
+  --logo-invert-Value: 0;
+
+  /* Backgound Colors Variables */
+  --header-background-color: #fafafa;
+  --register-background-color: #18a0fb;
+  --login-background-color: #ffffff;
+  /* --body-background-color: #ffffff; */
+  --body-background-color: #f0f8ff;
+  --footer-background-color: #bcdbf5;
+
+  /* Text Color Variables */
+  --global-text-color: #000000;
+  --text-color: #18a0fb;
+  --register-text-color: #ffffff;
+
+  /* Transition Time Variables */
+  --transition-time: 0.5s;
+}
+
+:root[data-theme="dark"] {
+  /* Numerical Value Variables */
+  --logo-invert-Value: 1;
+
+  /* Backgound Colors Variables */
+  --header-background-color: #000000;
+  --register-background-color: #ffffff;
+  --login-background-color: #000000;
+  /* --body-background-color: #292929; */
+  --body-background-color: #455059;
+  /* --footer-background-color: #323840; */
+  --footer-background-color: #1a1a1a;
+
+  /* Text Color Variables */
+  --global-text-color: #ffffff;
+  --text-color: #ffffff;
+  --register-text-color: #00000;
+
+  /* Transition Time Variables */
+  --transition-time: 0.5s;
+}
+
+body {
+  background-color: var(--body-background-color);
+  transition: background 0.5s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scroll Bar Starts*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 20px;
+  border-radius: 5px;
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
+/* Scroll Bar Ends*/
+
+h1,
+a {
+  /* Temp Use */
+  color: var(--global-text-color);
+}
+
+header {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--header-background-color);
+  z-index: 1000;
+  flex-wrap: wrap;
+  transition: background var(--transition-time);
+}
+
+header .flex-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .flex-left .logo {
+  border-radius: 0px;
+  margin: 10px 15px 10px 20px;
+}
+
+header .flex-left .logo a img {
+  filter: invert(var(--logo-invert-Value));
+}
+
+header .flex-left .navPanel ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .flex-left .navPanel ul li {
+  list-style: none;
+  margin: 10px 15px 10px 15px;
+}
+
+header .flex-left .navPanel ul li a {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  margin: 10px;
+  height: 18px;
+  left: 285px;
+  top: 21px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+
+  /* Actionable Item */
+
+  color: var(--text-color);
+}
+
+header .flex-right ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .flex-right ul li {
+  margin: 10px 15px 10px 15px;
+  list-style: none;
+}
+
+header .flex-right ul .login {
+  height: 40px;
+  width: 140px;
+  border-radius: 6px;
+  background: var(--login-background-color);
+  border: 1px solid var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+header .flex-right ul .login a {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: var(--text-color);
+}
+
+header .flex-right ul .register {
+  background: var(--register-background-color);
+  border-radius: 6px;
+  height: 40px;
+  width: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* header .flex-right ul .register:hover {
+  box-shadow: 0px 0px 10px 10px var(--register-background-color);
+} */
+
+header .flex-right ul .register a {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: var(--register-text-color);
+}
+
+.mode {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 8px #888888;
+  color: #292929;
+  background-color: #ffffff;
+  padding: 2px;
+  overflow: hidden;
+  z-index: 995;
+}
+
+.mode img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dark {
+  color: #fafafa;
+  background-color: #000000;
+}
+.dark img {
+  filter: invert(1);
+}
+
+main {
+  height: fit-content;
+}
+section {
+  position: relative;
+  min-height: 100vh;
+  z-index: 1;
+  color: var(--global-text-color);
+  /* padding: 90px 0px 0px 0px; */
+}
+
+section a {
+  color: var(--global-text-color);
+}
+
+section h1 {
+  font-size: 2em;
+}
+
+footer {
+  position: relative;
+  margin-top: auto;
+  min-height: 40vh;
+  background-color: var(--footer-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer img {
+  filter: invert(var(--logo-invert-Value));
+}

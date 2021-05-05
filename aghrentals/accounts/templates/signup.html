@@ -1,0 +1,9 @@
+{% extends 'home.html' %} {% block title %} AGH Rentals {% endblock %}
+{% block content %}
+<h1>Signup</h1>
+<form method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Sign Up">
+</form>
+{% endblock %}
