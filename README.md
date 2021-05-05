@@ -59,11 +59,11 @@ Create superuser for admin site
 	python manage.py createsuperuser
 	
 	
-**Head to** `http://127.0.0.1:8000/admin`
 
 **Now run the server Again**
 	
 	python manage.py runserver
-	
+
+**Head to** `http://127.0.0.1:8000/admin`
 
 ### &copy; [Abhinav Pamarthi](https://github.com/pamarthiabhinav) &copy;
