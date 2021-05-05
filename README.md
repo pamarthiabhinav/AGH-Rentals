@@ -6,7 +6,8 @@
 **Getting Started:** \
 &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  A rental system Project Written in Django.
 
-##**Installation**
+## **Installation**
+
 **clone repo**
 
 	git clone https://github.com/pamarthiabhinav/AGH-Rentals.git
