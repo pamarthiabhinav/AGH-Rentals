@@ -47,6 +47,10 @@
 **Head to** `http://127.0.0.1:8000/`
 
 
+**Stop the Running server**
+	
+	ctrl + c
+	
 **Admin Site**
 
 Create superuser for admin site
@@ -57,5 +61,9 @@ Create superuser for admin site
 	
 **Head to** `http://127.0.0.1:8000/admin`
 
+**Now run the server Again**
+	
+	python manage.py runserver
+	
 
 ### &copy; [Abhinav Pamarthi](https://github.com/pamarthiabhinav) &copy;
