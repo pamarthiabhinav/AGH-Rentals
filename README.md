@@ -15,7 +15,7 @@ A rental system Project Written in Django.
 **Go Into Repo**
 
 	
-	cd AGH-Rentals
+	cd AGH-Rentals\aghrentals
 	
 
 **Make A Virtual Environment**
