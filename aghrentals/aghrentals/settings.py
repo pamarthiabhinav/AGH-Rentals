@@ -37,8 +37,37 @@ INSTALLED_APPS = [
     # 'accounts.apps.AccountsConfig',
     'home',
     'accounts',
+    'products',
+    'cars',
+    'bikes',
+    'cameras',
+    'djangocustomcommands',
+
 
     # Installed Pre-Defined Apps Packages
+
+    # django-import-export
+    'import_export',
+
+    # django-admin-interface
+    'admin_interface',
+    'colorfield',
+
+    # django-crispy-forms
+    'crispy_forms',
+
+    # django-defender
+    'defender',
+
+    # django-allauth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.amazon',
+    'allauth.socialaccount.providers.linkedin_oauth2',
 
 
     # Default Given Apps
@@ -56,6 +85,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'defender.middleware.FailedLoginMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -124,7 +154,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -136,3 +166,58 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+DEFENDER_LOGIN_FAILURE_LIMIT = 3
+
+DEFENDER_LOCKOUT_TEMPLATE = 'defender.html'
+
+LOGIN_REDIRECT_URL = '/'
+
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    },
+    'github': {
+        'SCOPE': [
+            'user',
+            'repo',
+            'read:org',
+        ]
+    },
+    'linkedin_oauth2': {
+        'SCOPE': [
+            'r_liteprofile',
+            'r_emailaddress',
+        ],
+        'PROFILE_FIELDS': [
+            'id',
+            'firstName',
+            'lastName',
+            'emailAddress',
+            'email-address',
+            'profilePicture',
+            'public-profile-url',
+        ],
+        'LOCATION_FIELDS': [
+            'location',
+        ],
+        'POSITION_FIELDS': [
+            'company',
+        ]
+    }
+}

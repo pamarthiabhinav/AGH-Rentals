@@ -1,9 +1,72 @@
-{% extends 'home.html' %} {% block title %} AGH Rentals {% endblock %}
+{% extends 'home.html' %}
+{% load static %}
+{% block title %} AGH Rentals {% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+{% endblock %}
 {% block content %}
-<h1>Signup</h1>
-<form method="post" action="{% url 'signup' %}">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Sign Up">
-</form>
+{% load crispy_forms_tags %}
+<div class="signup">
+    <form method="post" action="{% url 'signup' %}" class="signupForm" novalidate>
+        {% csrf_token %}
+        <!-- {% for non_field_error in form.non_field.errors %}
+        <p class="error">{{non_field_error}}</p>
+        {% endfor %}
+        <table align="center">
+            {% for field in form %}
+            <tr>
+                <td>
+                    <label for="{{ field.id_for_label }}" class="label">
+                        {{field.label}}
+                    </label>
+                </td>
+                <td>{{ field }}
+                    {% if field.help_text %}
+                    <p class="help_text">{{field.help_text}}</p>
+                    {% endif %}
+                    {% for error in field.errors %}
+                    <ul>
+                        <li>{{error}}</li>
+                    </ul>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %} -->
+        <div class="row">
+            <div class="col-3">
+                {{ form.firstName|as_crispy_field }}
+            </div>
+            <div class="col-3">
+                {{ form.lastName|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form.email|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form.username|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                {{ form.password1|as_crispy_field }}
+            </div>
+            <div class="col-3">
+                {{ form.password2|as_crispy_field }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Sign Up</button>
+    </form>
+    <span class="hl1"></span>
+    <div class="abhiwrapper">
+        <div class="contextInfo">
+            <i class="fa fa-info-circle"></i>
+            Already Had An Account Click <a class="loginLink" href="{% url 'login' %}">Here</a> To Sign In
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/signup.js' %}"></script>
 {% endblock %}

@@ -1,12 +1,97 @@
-{% extends 'home.html' %} {% block title %} AGH Rentals {% endblock %}
+{% extends 'home.html' %}
+{% block title %} AGH Rentals {% endblock %}
+{% load static %}
+{% load socialaccount %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+{% endblock %}
 {% block content %}
-<h1>Log In</h1>
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{form.as_p}}
-    {% if request.GET.next %}
-    <input type="hidden" name="next" value="{{request.GET.next}}">
+{% load crispy_forms_tags %}
+<div class="loginBox">
+    {% if messages %}
+    <div class="abhiwrapper">
+        {% for message in messages %}
+        <div class="contextInfo">
+            <i class="fa fa-info-circle"></i>
+            {{message}}
+        </div>
+        {% endfor %}
+    </div>
+    <span class="hl2"></span>
     {% endif %}
-    <input type="submit" value="Login">
-</form>
+    <form method="post" action="{% url 'login' %}" class="loginForm">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-4">
+                {{form.username|as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                {{form.password|as_crispy_field}}
+            </div>
+        </div>
+        {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{request.GET.next}}">
+        {% endif %}
+        <div class="row">
+            <div class="col-4" align="center">
+                <button type="submit" class="btn btn-success">Log In</button>
+            </div>
+        </div>
+    </form>
+    <br><br>
+    <div class="dividor">
+        <div class="or">
+            <div class="fline">
+                <span class="hl1"></span>
+                <span class="line1">Or</span>
+                <span class="hl1"></span>
+            </div>
+            <span class="line2">Login Through The Below Social Apps</span>
+        </div>
+    </div>
+    <div class="abhiWrapper">
+        <a class="AuthElement" href="{% provider_login_url 'google' %}">
+            <div class="abhiButton">
+                <div class="abhiIcon" id="googleIcon">
+                    <i class="fa fa-google"></i>
+                </div>
+                <span id="googleSpan">Google</span>
+            </div>
+        </a>
+        <a class="AuthElement" href="{% provider_login_url 'github' %}">
+            <div class="abhiButton">
+                <div class="abhiIcon" id="githubIcon">
+                    <i class="fa fa-github"></i>
+                </div>
+                <span id="githubSpan">Github</span>
+            </div>
+        </a>
+        <a class="AuthElement" href="{% provider_login_url 'amazon' %}">
+            <div class="abhiButton">
+                <div class="abhiIcon" id="amazonIcon">
+                    <i class="fa fa-amazon"></i>
+                </div>
+                <span id="amazonSpan">Amazon</span>
+            </div>
+        </a>
+        <a class="AuthElement" href="{% provider_login_url 'linkedin_oauth2' %}">
+            <div class="abhiButton">
+                <div class="abhiIcon" id="linkedinIcon">
+                    <i class="fa fa-linkedin"></i>
+                </div>
+                <span id="linkedinSpan">LinkedIn</span>
+            </div>
+        </a>
+    </div>
+    <span class="hl2"></span>
+    <div class="abhiwrapper">
+        <div class="contextInfo">
+            <i class="fa fa-info-circle"></i>
+            Don't Have An Account Click <a class="signupLink" href="{% url 'signup' %}">Here</a> To Sign Up
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/login.js' %}"></script>
 {% endblock %}

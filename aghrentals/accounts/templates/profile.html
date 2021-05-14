@@ -1,0 +1,12 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %} AGH Rentals {% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+<section class="profile">
+  <h2>{{user.get_username.capitalize}}</h2>
+</section>
+{% endblock %}

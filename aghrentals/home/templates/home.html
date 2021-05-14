@@ -6,9 +6,13 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="icon" href="{% static 'images/favicon.ico' %}" />
-  {% block link %}
   <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  <script src="https://use.fontawesome.com/6a4bd90154.js"></script>
+  {% block link %}
+  <link rel="stylesheet" href="{% static 'css/homePage.css' %}" />
   {% endblock %}
   <title>{% block title %}AGH Rentals{% endblock %}</title>
 </head>
@@ -37,7 +41,7 @@
     <div class="flex-right">
       <ul>
         {% if user.is_authenticated %}
-        <li class="login"><a href="">Profile</a></li>
+        <li class="login"><a href="{% url 'profilePage' %}">Profile</a></li>
         <li class="register"><a href="{% url 'logout' %}">Log Out</a></li>
         {% else %}
         <li class="login"><a href="{% url 'login' %}">Login</a></li>
@@ -48,15 +52,22 @@
   </header>
   <main>
     {% block content %}
-    <section id="main">
-      <h1>
-        Welcome To<br />
-        AGH Rentals
-      </h1>
-      <a href="{% url 'newPage' %}">Go To newPage</a>
-      <center>
-        <h1>Main</h1>
-      </center>
+    <section class="banner">
+      <video src="{% static 'videos/agh-intro.mp4' %}" muted autoplay loop type="mp4"></video>
+      <div class="textBox">
+        <h2 class="heading">AGH Rentals</h2>
+        <p>
+          AGH Rentals Is A SDP Based On Rental Systems, Where Users Can Book Cars, Bikes And Cameras For Rent. Coming
+          To
+          <abbr title="Skill Development Project">SDP</abbr>
+          , Also Called As Mid-Grad Capstone Project Done By A Team
+          Of 3 Students Of K L University.
+        </p>
+        <a href="#">Read More...</a>
+      </div>
+      <div class="videoBx">
+        <video src="{% static 'videos/agh-intro.mp4' %}" muted autoplay loop type="mp4"></video>
+      </div>
     </section>
     <section id="bikes">
       <center>
@@ -73,10 +84,93 @@
         <h1>Camera</h1>
       </center>
     </section>
-    <section id="support">
-      <center>
+    <section id="support" class="support">
+      <!-- <center>
         <h1>Support</h1>
-      </center>
+      </center> -->
+      <div class="container">
+        {% if messages %}
+        <div class="abhiwrapper">
+          {% for message in messages %}
+          <div class="contextInfo">
+            <i class="fa fa-info-circle"></i>
+            {{message}}
+          </div>
+          {% endfor %}
+        </div>
+        <span class="hl2"></span>
+        {% endif %}
+        <div class="contactinfo">
+          <div>
+            <h2>Contact Info</h2>
+            <ul class="info">
+              <li>
+                <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                <span>Green Fields, Vaddeswaram<br> Andhra
+                  Pradesh-522502,<br>India</span>
+              </li>
+              <li>
+                <span><i class="fa fa-phone" aria-hidden="true"></i></span>
+                <span>+91 99081 06167</span>
+              </li>
+              <li>
+                <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                <span>hari.vege@kluniversity.in</span>
+            </ul>
+          </div>
+          <ul class="sci">
+            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+            <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+            <li><a href=""><i class="fa fa-google"></i></a></li>
+          </ul>
+        </div>
+        <div class="contactForm">
+          <h2>Send A Message</h2>
+          <form name="f" method="POST" onsubmit="return myValidate()" action="{% url 'issuesSend' %}" class="formBox">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+            <div class="inputBox w50">
+              <input type="text" name="first_name" value="{{ request.user.first_name }}" disabled="true">
+              <span class="isAuth">First Name</span>
+            </div>
+            <div class="inputBox w50">
+              <input type="text" value="{{ request.user.last_name }}" name="last_name" disabled="true">
+              <span class="isAuth">Last Name</span>
+            </div>
+            <div class="inputBox w50">
+              <input type="text" value="{{ request.user.email }}" name="email" disabled="true">
+              <span class="isAuth">Email Address</span>
+            </div>
+            {% else %}
+            <div class="inputBox w50">
+              <input type="text" name="first_name" required>
+              <span>First Name</span>
+            </div>
+            <div class="inputBox w50">
+              <input type="text" name="last_name" required>
+              <span>Last Name</span>
+            </div>
+            <div class="inputBox w50">
+              <input type="text" name="email" required>
+              <span>Email Address</span>
+            </div>
+            {% endif %}
+            <div class="inputBox w50">
+              <input type="number" name="mobile" required>
+              <span>Mobile Number</span>
+            </div>
+            <div class="inputBox w100">
+              <textarea name="message" required></textarea>
+              <span>Write Your Message Here ...</span>
+            </div>
+            <div class="inputBox w50">
+              <input type="submit" value="Send">
+            </div>
+          </form>
+        </div>
+      </div>
     </section>
     {% endblock %}
   </main>
@@ -84,30 +178,72 @@
     <img src="{% static 'images/logo.png' %}" alt="agh" />
   </div>
   <footer>
-    <img src="{% static 'images/logo.png' %}" alt="AGH Rentals" />
+    <div class="container">
+      <div class="sec aboutus">
+        <h2>
+          About Us
+        </h2>
+        <p>
+          AGH Rentals Is A SDP Based On Rental Systems, Where Users Can Book Cars, Bikes And Cameras For Rent. Coming To
+          <abbr title="Skill Development Project">SDP</abbr>
+          , Also Called As Mid-Grad Capstone Project Done By A Team
+          Of 3 Students Of K L University
+        </p>
+        <h3>Team Members:</h3>
+        <ul class="tds">
+          <li>
+            <a href="https://www.linkedin.com/in/abhinav-pamarthi" target="_blank">
+              <strong class="highlightLetter">A</strong>bhinav Pamarthi
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/gayaetiri-chalasani/" target="_blank">
+              <strong class="highlightLetter">G</strong>ayaetiri Chalasani
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/harish-pendyala-580113201/" target="_blank">
+              <strong class="highlightLetter">H</strong>arish Pendyala
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="sec quickLinks">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="">About</a></li>
+          <li><a href="">FAQ</a></li>
+          <li><a href="">Privacy Policy</a></li>
+          <li><a href="">Help</a></li>
+          <li><a href="">Terms & Conditions</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+      </div>
+      <div class="sec contact">
+        <h2>Contact Info</h2>
+        <ul class="info">
+          <li>
+            <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+            <a href="https://goo.gl/maps/QVwydmWwaUTphFnt6" target="_blank">Green Fields, Vaddeswaram<br> Andhra
+              Pradesh-522502,<br>India</a>
+          </li>
+          <li>
+            <span><i class="fa fa-phone" aria-hidden="true"></i></span>
+            <p><a href="tel:919908106167">+91 99081 06167</a></p>
+          </li>
+          <li>
+            <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+            <p><a href="mailto:hari.vege@kluniversity.in">hari.vege@kluniversity.in</a></p>
+          </li>
+        </ul>
+      </div>
+    </div>
   </footer>
-  <script>
-    const html = document.querySelector("html");
-    const mode = document.querySelector(".mode");
-    html.dataset.theme = localStorage.getItem("mode");
-    if (html.dataset.theme === "dark") {
-      mode.classList.add("dark");
-    }
-    else {
-      mode.classList.remove("dark");
-    }
-
-    mode.addEventListener("click", function () {
-      mode.classList.toggle("dark");
-      if (html.dataset.theme === "dark") {
-        localStorage.setItem("mode", "light");
-        html.dataset.theme = `light`;
-      } else {
-        localStorage.setItem("mode", "dark");
-        html.dataset.theme = `dark`;
-      }
-    });
-  </script>
+  <div class="copyrightText">
+    <p>Copyright <i class="fa fa-copyright" aria-hidden="true"></i> <span id="yearObj"></span> AGH Rentals. All Rights
+      Reserved</p>
+  </div>
+  <script src="{% static 'js/home.js' %}"></script>
 </body>
 
 </html>

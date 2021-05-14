@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login Timeout</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Kaushan+Script&display=swap');
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .timeout {
+            background-color: #f0f8ff;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .info {
+            font-family: 'Kaushan Script', cursive;
+            color: #000000;
+            font-size: 34px;
+            font-weight: 500;
+        }
+
+        .info .time {
+            font-family: 'Bungee Shade', cursive;
+            font-size: 40px;
+            font-weight: 900;
+            color: darkorange;
+            margin: 0 0 0 20px;
+        }
+
+        .timeout .reason-box {
+            position: absolute;
+            bottom: 0;
+            margin: 0 0 50px 0;
+            background-color: #fce4e4;
+            border: 1px solid #fcc2c3;
+            float: left;
+            padding: 20px 30px;
+        }
+
+        .timeout .reason-box .reason-text {
+            color: #cc0033;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 20px;
+            text-shadow: 1px 1px rgba(250, 250, 250, .3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="timeout">
+        <p class="info">You Can Login After: <b class="time">{{cooloff_time_minutes|add:"0"}} Minutes</b>&nbsp;.</p>
+        <div class="reason-box">
+            <li class="reason-text">
+                You Are Viewing This Coz You Have Attempted Wrong Login Attempts More Than 3 Times
+            </li>
+        </div>
+    </div>
+</body>
+
+</html>

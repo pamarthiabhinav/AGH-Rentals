@@ -1,0 +1,213 @@
+:root[data-theme="light"] {
+  --login-text-color: #000;
+  --background-iconbox-color: #fff;
+  --iconbox-shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dark"] {
+  --login-text-color: #fff;
+  --background-iconbox-color: #0a0a0a;
+  --iconbox-shadow-color: rgba(255, 255, 255, 0.5);
+}
+
+.asteriskField {
+  color: darkorange;
+}
+
+.form-text.text-muted {
+  font-size: 11px;
+  padding: 0 0 0 20px;
+}
+.requiredField {
+  padding: 0 0 0 10px;
+}
+.loginBox {
+  /* position: relative; */
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.loginForm {
+  position: relative;
+  margin: 0 0 30px 0;
+  width: 1000px;
+  transform: translate(35%, 25%);
+}
+
+.loginForm label {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="email"],
+.loginForm input[type="password"] {
+  background: none;
+  display: block;
+  border: 2px solid #18a0fb;
+  padding: 14px 10px;
+  outline: none;
+  color: var(--login-text-color);
+  border-radius: 24px;
+}
+
+.emailinput.form-control.is-invalid,
+.textinput.textInput.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.or {
+  text-align: center;
+  color: var(--login-text-color);
+}
+
+.sci {
+  margin: 15px 15px 15px 15px;
+}
+
+.or .fline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.or .fline .hl1 {
+  border: 1px solid var(--login-text-color);
+  width: 155px;
+  margin: 0 5px 0 5px;
+}
+
+.or .fline .line1 {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.or .line2 {
+  font-size: 20px;
+  line-height: 55px;
+  font-weight: 500;
+}
+
+.abhiWrapper {
+  display: flex;
+}
+
+.abhiWrapper .AuthElement {
+  margin: 15px 5px 15px 5px;
+}
+
+.abhiButton {
+  width: 60px;
+  height: 60px;
+  background-color: var(--background-iconbox-color);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 10px var(--iconbox-shadow-color);
+  float: left;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.abhiButton:hover {
+  width: 175px;
+}
+
+.abhiButton span {
+  transition: all 0.3s ease-in-out;
+}
+
+.abhiButton .abhiIcon {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50px;
+  transform: rotateZ(-20deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.abhiButton .abhiIcon i {
+  font-size: 25px;
+  line-height: 60px;
+}
+
+.abhiButton span {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 60px;
+  margin-left: 10px;
+}
+
+.abhiButton:hover #googleIcon {
+  background-color: #dc3545;
+  color: #ffffff;
+  transform: rotateZ(0deg);
+}
+
+.abhiButton:hover #githubIcon {
+  background-color: #28a745;
+  color: #ffffff;
+  transform: rotateZ(0deg);
+}
+
+.abhiButton:hover #amazonIcon {
+  background-color: #ff9900;
+  color: #ffffff;
+  transform: rotateZ(0deg);
+}
+
+.abhiButton:hover #linkedinIcon {
+  background-color: #044289;
+  color: #ffffff;
+  transform: rotateZ(0deg);
+}
+
+.abhiButton:hover #googleSpan {
+  color: #dc3545;
+}
+
+.abhiButton:hover #githubSpan {
+  color: #28a745;
+}
+
+.abhiButton:hover #amazonSpan {
+  color: #ff9900;
+}
+
+.abhiButton:hover #linkedinSpan {
+  color: #044289;
+}
+
+.abhiwrapper {
+  bottom: 0;
+  margin: 20px 0 50px 0;
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  float: left;
+  padding: 20px 30px;
+}
+
+.abhiwrapper .contextInfo {
+  color: #e02a58;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 20px;
+  text-shadow: 1px 1px rgba(250, 250, 250, 0.3);
+}
+
+.abhiwrapper .contextInfo i {
+  font-size: 18px;
+  margin: 0 5px 0 0;
+  transform: scale(1.2);
+}
+
+.abhiwrapper .contextInfo .signupLink {
+  color: blue;
+}

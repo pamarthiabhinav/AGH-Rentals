@@ -19,6 +19,10 @@ from . import views
 
 urlpatterns = [
     path('', include("home.urls")),
+    path('account/social/login/cancelled/',
+         views.login_cancelled, name="login_cancelled"),
+    path('account/', include('allauth.urls')),
     path('accounts/', include("accounts.urls")),
     path('admin/', admin.site.urls),
+    path('admin/defender/', include('defender.urls')),
 ]
