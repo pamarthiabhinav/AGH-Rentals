@@ -52,6 +52,7 @@
 **Head to** `http://127.0.0.1:8000/`
 
 
+----------------------
 **Stop the Running server**
 	
 	ctrl + c
@@ -69,6 +70,11 @@ Create superuser for admin site
 	
 	python manage.py runserver
 
-**Head to** `http://127.0.0.1:8000/admin`
+
+**Head to** `http://127.0.0.1:8000/aghar` The Admin Url Has Been Modified from admin to aghar
+
+----------------------
+**Note** : Although **Heading to** `http://127.0.0.1:8000/admin` will Show The Same Admin Panel But It Won't Give Any Response For Your Login Credentials. This Is Because Of django-Honeypot Which I Have Added To The Project  
+
 
 ### &copy; [Abhinav Pamarthi](https://github.com/pamarthiabhinav) &copy;
