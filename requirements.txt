@@ -6,6 +6,7 @@ cryptography==3.4.7
 defusedxml==0.7.1
 diff-match-patch==20200713
 Django==3.2
+django-admin-honeypot==1.1.0
 django-admin-interface==0.16.3
 django-allauth==0.44.0
 django-colorfield==0.4.1
@@ -14,6 +15,7 @@ django-defender==0.9.0
 django-flat-responsive==2.0
 django-flat-theme==1.1.4
 django-import-export==2.5.0
+django-session-timeout==0.1.0
 et-xmlfile==1.1.0
 idna==2.10
 MarkupPy==1.14
@@ -21,6 +23,7 @@ mysqlclient==2.0.3
 oauthlib==3.1.0
 odfpy==1.4.1
 openpyxl==3.0.7
+Pillow==8.2.0
 pycparser==2.20
 PyJWT==2.1.0
 python3-openid==3.2.0

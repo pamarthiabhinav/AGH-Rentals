@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.profile {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.detailsBox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.details {
+  /* margin: 20px 200px 200px 150px; */
+  width: 60%;
+  border: 1px solid #333;
+  border-radius: 50px;
+  /* box-shadow: none; */
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.details .imageBox {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.details .imageBox .imageLine1 {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details .imageBox .imageLine2 {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f0f8ff;
+  box-shadow: var(--box-shadow);
+}
+
+.details .imageBox .imageLine1 .imageLine2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.details .userInfo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-items: center; */
+  font-family: "Quicksand", sans-serif;
+}
+
+.details .userInfo .name {
+  position: relative;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 45px;
+  /* font-family: ; */
+  color: #ffa500;
+}
+
+.details .userInfo .username {
+  position: relative;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+}
+
+.info {
+  position: relative;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+/* .info * {
+  border: 1px solid #333;
+} */
+
+.info .userOrders,
+.info .totalOrders {
+  position: -webkit-sticky;
+  position: sticky;
+  flex-grow: 1;
+  top: 0;
+  /* left: 10px; */
+  height: fit-content;
+  padding: 20px;
+  overflow: hidden;
+  /* background: #000; */
+  border: 1px solid #333;
+  box-shadow: var(--box-shadow);
+}
+
+.userOrders .heading,
+.totalOrders .heading {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info .middle {
+  flex-grow: 3;
+  border: 1px solid #333;
+  margin: 0 10px 0 10px;
+  /* height: 100vh; */
+  box-shadow: var(--box-shadow);
+}
+
+.info .middle .charts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px 10px 20px;
+}

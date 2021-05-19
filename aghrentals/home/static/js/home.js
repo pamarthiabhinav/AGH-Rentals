@@ -23,30 +23,27 @@ mode.addEventListener("click", function () {
   }
 });
 
-function myValidate() {
-  var email = document.f.email;
-  var mobile = document.f.mobile;
-  var count = 0;
-  var mailformat =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  var mobileformat = /^\d{10}$/;
-  if (!email.getAttribute("disabled")) {
-    if (email.value.match(mailformat)) {
-      email.classList.remove("invalidFormat");
-    } else {
-      email.classList.add("invalidFormat");
-      count++;
-    }
-  }
-  if (mobile.value.match(mobileformat)) {
-    mobile.classList.remove("invalidFormat");
-  } else {
-    mobile.classList.add("invalidFormat");
-    count++;
-  }
-  if (count > 0) {
-    return false;
-  } else {
-    return true;
-  }
+function initFreshChat() {
+  window.fcWidget.init({
+    token: "cb42b721-f165-47bc-be86-6cd81f8b87d3",
+    host: "https://wchat.in.freshchat.com",
+  });
 }
+function initialize(i, t) {
+  var e;
+  i.getElementById(t)
+    ? initFreshChat()
+    : (((e = i.createElement("script")).id = t),
+      (e.async = !0),
+      (e.src = "https://wchat.in.freshchat.com/js/widget.js"),
+      (e.onload = initFreshChat),
+      i.head.appendChild(e));
+}
+function initiateCall() {
+  initialize(document, "freshchat-js-sdk");
+}
+try {
+  window.addEventListener
+    ? window.addEventListener("load", initiateCall, !1)
+    : window.attachEvent("load", initiateCall, !1);
+} catch (error) {}

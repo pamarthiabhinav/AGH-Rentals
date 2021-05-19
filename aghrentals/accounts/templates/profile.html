@@ -3,10 +3,131 @@
 {% block title %} AGH Rentals {% endblock %}
 {% block link %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.css"
+  integrity="sha512-V0+DPzYyLzIiMiWCg3nNdY+NyIiK9bED/T1xNBj08CaIUyK3sXRpB26OUCIzujMevxY9TRJFHQIxTwgzb0jVLg=="
+  crossorigin="anonymous" />
 {% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}
 <section class="profile">
-  <h2>{{user.get_username.capitalize}}</h2>
+  <div class="detailsBox">
+    <div class="details">
+      {% for user in userProf %}
+      <div class="imageBox">
+        <div class="imageLine1">
+          <div class="imageLine2">
+            <img src="{{user.propic.url}}" alt="">
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="userInfo">
+        <span class="name">{{ user.get_full_name }}</span><br />
+        <span class="username">@{{user.get_username}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="userOrders">
+      <div class="orderDetails">
+        <div class="heading">
+          <h3>Your Orders</h3>
+        </div>
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Orders</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr scope="row" class="bike">
+              <td class="cat">Bike</td>
+              <td class="cnt">{{request.session.userBike}}</td>
+            </tr>
+            <tr class="car">
+              <td class="cat">Car</td>
+              <td class="cnt">{{request.session.userCar}}</td>
+            </tr>
+            <tr class="camera">
+              <td class="cat">Camera</td>
+              <td class="cnt">{{request.session.userCamera}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="middle">
+      <div class="charts">
+        <div class="chartBox" style="width: 300px;height: 300px;text-align: center;">
+          <!-- <div class="ct-chart userOrderGraph ct-perfect-fifth"></div> -->
+          <canvas id="myChart1" width="600" height="400"></canvas>
+          Your Booking Analytics
+        </div>
+        <div class="chartBox" style="width: 300px;height: 300px;text-align: center;">
+          <!-- <div class="ct-chart totalOrderGraph ct-perfect-fifth"></div> -->
+          <canvas id="myChart2" width="600" height="400"></canvas>
+          All Customers Booking Analytics
+        </div>
+      </div>
+      <hr>
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Booked Date</th>
+            <th scope="col">Days Booked</th>
+            <th scope="col">price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in order %}
+          <tr scope="row">
+            <td>{{ i.prod }}</td>
+            <td>{{ i.bookDate }}</td>
+            <td>{{ i.bookDays }}</td>
+            <td>{{ i.price }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="totalOrders">
+      <div class="orderDetails">
+        <div class="heading">
+          <h3>Website Orders</h3>
+        </div>
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Orders</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr scope="row" class="bike">
+              <td class="cat">Bike</td>
+              <td class="cnt">{{request.session.totalBike}}</td>
+            </tr>
+
+            <tr class="car" scope="row">
+              <td class="cat">Car</td>
+              <td class="cnt">{{request.session.totalCar}}</td>
+            </tr>
+            <tr class="camera" scope="row">
+              <td class="cat">Camera</td>
+              <td class="cnt">{{request.session.totalCamera}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </section>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js"
+  integrity="sha512-9rxMbTkN9JcgG5euudGbdIbhFZ7KGyAuVomdQDI9qXfPply9BJh0iqA7E/moLCatH2JD4xBGHwV6ezBkCpnjRQ=="
+  crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/proc1.js' %}"></script>
+<!-- <script src="{% static 'js/profile.js' %}" defer></script> -->
 {% endblock %}

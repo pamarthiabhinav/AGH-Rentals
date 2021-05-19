@@ -1,0 +1,18 @@
+{% extends 'home.html' %} New Page {%block title%} New Page {% endblock %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/order_placed.css' %}">
+{% endblock %}
+{%block content%}
+<section class="cnfrm">
+    <div class="cnfrmContainer">
+        <div class="confirmation">
+            <!-- <i class="fa fa-check-circle-o" aria-hidden="true"></i> -->
+            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+            <span class="span1"> Congratulations Your Order Has Been confirmed Buddy</span>
+            <small> You Will Be Getting A Booking Bill PDF To Your Mail Shortly</small>
+            <span class="span2">Go To <a href="{% url 'homePage' %}">HomePage</a></span>
+        </div>
+    </div>
+</section>
+{% endblock %}

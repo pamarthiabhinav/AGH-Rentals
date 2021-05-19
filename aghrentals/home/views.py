@@ -2,18 +2,19 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import issue
+from products.models import Company
 from django.contrib import messages
 
 # Create your views here.
 
 
 def homePage(request):
-    return render(request, "home.html")
-
-
-@login_required(login_url="/accounts/login/")
-def newPage(request):
-    return render(request, "newpage.html")
+    bikes = Company.objects.filter(category='bike')
+    cars = Company.objects.filter(category='car')
+    cameras = Company.objects.filter(category='camera')
+    myDict = {'bike': bikes, 'cars': cars, 'cameras': cameras}
+    # return render(request, "home.html", company=myDict)
+    return render(request, "home.html", myDict)
 
 
 def issuesSend(request):
@@ -39,8 +40,13 @@ def issuesSend(request):
         myissue.save()
         messages.success(
             request, "Your Issue Has Been Successfully Registered")
-    return redirect('homePage')
+    return redirect('/#support')
 
 
 def sample(request):
     return HttpResponse(str(request))
+
+
+@login_required(login_url="/accounts/login/")
+def newPage(request):
+    return render(request, "order_placed.html")

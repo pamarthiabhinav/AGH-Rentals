@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+from django.conf.urls.static import static
+from . import views, settings
 
 urlpatterns = [
     path('', include("home.urls")),
@@ -23,6 +24,12 @@ urlpatterns = [
          views.login_cancelled, name="login_cancelled"),
     path('account/', include('allauth.urls')),
     path('accounts/', include("accounts.urls")),
-    path('admin/', admin.site.urls),
-    path('admin/defender/', include('defender.urls')),
-]
+    path('products/', include("products.urls")),
+    path('orders/', include("order.urls")),
+    path('bikes/', include("bikes.urls")),
+    path('camera/', include("cameras.urls")),
+    path('cars/', include("cars.urls")),
+    path('admin/', include("admin_honeypot.urls"), name='admin_honeypot'),
+    path('aghar/', admin.site.urls),
+    path('aghar/defender/', include('defender.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

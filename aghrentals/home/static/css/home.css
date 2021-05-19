@@ -158,10 +158,10 @@ header .flex-left .navPanel ul li a {
   margin: 10px;
   height: 18px;
   left: 285px;
-  top: 21px;
+  top: 25px;
   font-style: normal;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 18px;
   display: flex;
   align-items: center;
@@ -243,7 +243,7 @@ header .flex-right ul .register a {
 .mode {
   position: fixed;
   bottom: 0;
-  right: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -313,7 +313,7 @@ footer .container .sec {
 }
 
 footer .container .sec.aboutus {
-  width: 40%;
+  width: 35%;
 }
 
 footer .container h2 {
@@ -332,6 +332,13 @@ footer .container h2::before {
   height: 2px;
   background: #f00;
   transition: width 0.5s ease-in-out;
+}
+
+footer .container .sec.titleLogo {
+  position: absolute;
+  left: 0;
+  margin: 10rem 0 0 3rem;
+  filter: scale(1.5);
 }
 
 footer .container .sec.aboutus h3 {

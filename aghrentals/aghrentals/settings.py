@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-h^q6*3qvf9m8j53v9u0#0_m=zrxfh_h!bzgo2pa_8)6wu#f0+_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'bikes',
     'cameras',
     'djangocustomcommands',
+    # 'orders',
+    'order',
 
 
     # Installed Pre-Defined Apps Packages
@@ -69,6 +71,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.amazon',
     'allauth.socialaccount.providers.linkedin_oauth2',
 
+    # django-admin-honeypot
+    'admin_honeypot',
+
 
     # Default Given Apps
     'django.contrib.admin',
@@ -82,6 +87,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -104,6 +110,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.media',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -142,6 +149,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Django Idle Session Timeout Section
+# this will log you out when browser is closed
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 3600                # Cookie Age For 1 Hour
+# Will prrevent from logging you out after 3600 seconds ~ 1 Hour
+SESSION_SAVE_EVERY_REQUEST = True
+"""
+SESSION_EXPIRE_SECONDS = 3600  # 1 hour
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY_GRACE_PERIOD = 60
+SESSION_TIMEOUT_REDIRECT = '/accounts/logout/'
+"""
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -161,7 +180,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+MEDIA_URL = 'agh/'
+MEDIA_ROOT = BASE_DIR
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

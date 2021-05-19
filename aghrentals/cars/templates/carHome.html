@@ -1,0 +1,46 @@
+{% extends 'home.html' %} New Page {%block title%} Bikes {% endblock %}
+{%block content%}
+<section>
+    <!-- <a href="{% url  'bikeHome' %}">All Companies</a>
+    {% for company in companies %}
+    <a href="{% url  'parameterBikeHome' company.name %}">{{company.name}}</a>
+    {% endfor %}
+    <br />
+    {% for product in products %}
+    <img src="{{product.image.url}}" alt=""><br>
+    <a href="">{{product.name}}&nbsp;{{product.id}}</a>
+    {% endfor %} -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="list-group">
+                    <a href="{% url  'carHome' %}" class="list-group-item list-group-item-action"
+                        aria-current="true">All Cars</a>
+                    {% for company in companies %}
+                    <a href="{% url  'parameterCarHome' company.name %}" class="list-group-item list-group-item-action"
+                        aria-current="true">{{company.name}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    {% for product in products %}
+                    <div class="col-sm-4 text-center mb-4">
+                        <a href="{% url 'product_details' product.id %}" class="btn">
+                            <div class="item" style="width: 200;height: 300;">
+                                <img src="{{product.image.url}}" alt="" height="300" class=""
+                                    style="width: 100%;height: 100%; object-fit: fill;">
+                                <div class="fw-bold">{{product.name}}
+                                </div>
+                                <div class="fw-bold">Rs. {{product.price}}/hr
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

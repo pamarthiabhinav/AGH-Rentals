@@ -1,0 +1,17 @@
+:root[data-theme="light"] {
+  --a-hover-color: #000;
+  --container-bg-color: #323840;
+}
+:root[data-theme="dark"] {
+  --container-bg-color: #323840;
+  --a-hover-color: #fff;
+}
+
+.btn .fw-bold {
+  opacity: 0.5;
+}
+
+.btn:hover .fw-bold {
+  opacity: 1;
+  color: var(--a-hover-color);
+}

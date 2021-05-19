@@ -1,0 +1,38 @@
+/* .col-12.mb-0 {
+  height: 70vh;
+} */
+
+.mb-5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pt-1 {
+  letter-spacing: 1.4px;
+  font-size: 24px;
+  word-spacing: 2px;
+}
+
+input[type="number"] {
+  padding: 10px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.has-error input {
+  border: 1px solid red;
+  -webkit-box-shadow: 0px 0px 2px 1px red;
+  /* box-shadow: 0px 0px 2px 1px red; */
+  box-shadow: 1px 2px 4px red;
+}
+
+.prices-list#prices {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

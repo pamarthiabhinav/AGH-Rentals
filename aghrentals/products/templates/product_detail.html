@@ -1,0 +1,83 @@
+{% extends 'home.html' %} New Page {% block title %} Bikes {% endblock %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+{% endblock %}
+{% block content %}
+<section class="mb-5">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div class="mdb-lightbox">
+                <div class="row product-gallery mx-1">
+                    <div class="col-12 mb-0">
+                        <figure class="view overlay rounded z-depth-1 main-img">
+                            <a href="{{ product.image.url }}" data-size="710x823">
+                                <img src="{{ product.image.url }}" class="img-fluid z-depth-1">
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <h4>{{ product.name }}</h4>
+            <p class="mb-2 text-muted text-uppercase large">{{ product.company }}</p>
+            <p><span class="mr-1"><strong>Rs. <span id="orgPrice">{{ product.price }}</span>/-</strong></span></p>
+            <p class="pt-1">
+                {{product.description}}
+            </p>
+            <div class="table-responsive">
+                <table class="table table-sm table-borderless mb-0">
+                    <tbody>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
+                            <td>{{ product.model }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <form name="placeForm" method="POST" onsubmit="return validate()"
+                action="{% url 'check_order' product.id %}">
+                {% csrf_token %}
+                <div class="table-responsive mb-2">
+                    <table class="table table-sm table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="pl-0 pb-0 w-25">No. Of Days</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="mt-1" id="input2">
+                                        <input type="number" name="bookDays" id="dayInput" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td>
+                                    <div class="mt-1 prices-list" id="prices" style="display: none;">
+                                        &nbsp;<span id="original-price">Rs. {{ product.price }}.0</span>/-<br>
+                                        +&nbsp;<span id="tax-price"></span>/-<br>
+                                        <hr>
+                                        &nbsp;&nbsp;Rs.<span id="total-price"></span>/Hr<br>
+                                        &nbsp;&nbsp;Total Price: Rs.<span id="full-price"></span> For 5 Days<br>
+                                        &nbsp;&nbsp;Discount: Rs.<span id="discount"></span><br>
+                                        &nbsp;&nbsp;Total Price: Rs.<span id="full-price-aft-disc"></span> For 5
+                                        Days<br>
+                                    </div>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <button id="submitBtn" type="submit" class="btn btn-primary btn-md mr-1 mb-2">Rent
+                    Now</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<script src="{% static 'js/product_detail.js' %}" defer></script>
+{% endblock %}
