@@ -74,7 +74,7 @@ Create superuser for admin site
 **Head to** `http://127.0.0.1:8000/aghar` The Admin Url Has Been Modified from admin to aghar
 
 ----------------------
-**Note** : Although **Heading to** `http://127.0.0.1:8000/admin` will Show The Same Admin Panel But It Won't Give Any Response For Your Login Credentials. This Is Because Of django-Honeypot Which I Have Added To The Project  
+**Note** : Although **Heading to The** `http://127.0.0.1:8000/admin` Will Also Show The Same Admin Panel But It Won't Give Any Response For Your Login Credentials. This Is Because Of django-Honeypot Which I Have Added Into The Project To Trick The Users With The Admin Panel
 
 
 ### &copy; [Abhinav Pamarthi](https://github.com/pamarthiabhinav) &copy;
