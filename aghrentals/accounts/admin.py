@@ -5,9 +5,12 @@ from import_export.admin import ImportExportModelAdmin
 from django.contrib.auth import user_logged_in
 from django.dispatch.dispatcher import receiver
 from django.contrib.sessions.models import Session
+from simple_history import register
 
 
 # Register your models here.
+
+register(User)
 
 
 @admin.register(UserSession)

@@ -26,6 +26,9 @@ SECRET_KEY = 'django-insecure-h^q6*3qvf9m8j53v9u0#0_m=zrxfh_h!bzgo2pa_8)6wu#f0+_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+UNDER_CONSTRUCTION = not DEBUG
+SIMPLE_HISTORY_REVERT_DISABLED = True
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -71,8 +74,23 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.amazon',
     'allauth.socialaccount.providers.linkedin_oauth2',
 
+    # django-herald
+    'herald',
+
+    # django-currency-field
+    # 'currency_field',
+
+    # django-simple-history
+    'simple_history',
+
     # django-admin-honeypot
     'admin_honeypot',
+
+    # django-extensions
+    'django_extensions',
+
+    # django-underconstruction
+    'django_underconstruction',
 
 
     # Default Given Apps
@@ -88,6 +106,12 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # 'django_session_timeout.middleware.SessionTimeoutMiddleware',
+
+    #  Installed Middlewears Start
+    'django_underconstruction.middleware.UnderConstructionMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
+    # Installed Middlewears End
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from simple_history.models import HistoricalRecords
 
 # Create your models here.
 
@@ -29,6 +30,7 @@ class Company(models.Model):
     name = models.CharField(max_length=30, null=False)
     image = models.ImageField(
         upload_to="uploads/images/companies/")
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.name
@@ -48,6 +50,7 @@ class product(models.Model):
     price = models.IntegerField(
         null=False, help_text="Please Just Specify The Price In Rupees Per Hour Only")
     image = models.ImageField(upload_to="uploads/images/product/")
+    history = HistoricalRecords()
 
     @property
     def get_price(self):

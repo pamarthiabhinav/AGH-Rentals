@@ -1,5 +1,5 @@
 from django.db import models
-
+from simple_history.models import HistoricalRecords
 # Create your models here.
 
 
@@ -15,6 +15,7 @@ class issue(models.Model):
     mobile = models.IntegerField()
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICS, default="open")
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.email

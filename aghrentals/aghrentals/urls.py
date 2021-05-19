@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from . import views, settings
+from django.conf.urls import url
 
 urlpatterns = [
     path('', include("home.urls")),
@@ -33,3 +34,8 @@ urlpatterns = [
     path('aghar/', admin.site.urls),
     path('aghar/defender/', include('defender.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns = [
+        url(r'^herald/', include('herald.urls')),
+    ] + urlpatterns
