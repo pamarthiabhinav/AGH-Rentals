@@ -1,10 +1,10 @@
 # AGH Rentals
 
-**About The Project:** \
-&nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  AGH Rentals Is The Project Based On The Real World Domain Rental Systems. This Project Is Made With The Python Full Stack Development[PFSD] Tech Stack
+## _About The Project_:
+&emsp;&emsp;&emsp;AGH Rentals Is The Project Based On The Real World Domain Rental Systems. This Project Is Made With The Python Full Stack Development[PFSD] Tech Stack
 
-**Getting Started:** \
-&nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  A rental system Project Written in Django.
+## _Getting Started_:
+&emsp;&emsp;&emsp;A rental system Project Written in Django.
 
 ## **Installation**
 
